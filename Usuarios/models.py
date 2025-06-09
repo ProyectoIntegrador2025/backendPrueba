@@ -10,7 +10,7 @@ ROLE_CHOICES = (
 
 class Usuario(AbstractUser):
     role = models.CharField(max_length=50, choices=ROLE_CHOICES)
-    foto = models.CharField(max_length=100, null=False)
+    foto = models.CharField(max_length=100, null=True, blank=True)
     
     def __str__(self):
         return self.first_name

@@ -1,10 +1,8 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
+from .models import Sucursal
+from .serializers import SucursalSerializer
+from rest_framework import viewsets
 
-# Create your views here.
 
-
-class Clase_Sucursal (APIView) :
-    
-    def get (self, request) :
-        pass
+class SucursalViewSet(viewsets.ModelViewSet):
+    queryset = Sucursal.objects.all()
+    serializer_class = SucursalSerializer

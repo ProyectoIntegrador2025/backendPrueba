@@ -6,13 +6,13 @@ class Sucursal (models.Model) :
     nombre = models.CharField(max_length=100, unique=True, null=False)
     direccion = models.CharField(max_length=250, unique=True, null=False)
     tenantId = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='sucursales_tenant')
-    adminId = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, related_name='sucursales_admin')
-    foto = models.CharField(max_length=100, null=False)
+    adminId = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, related_name='sucursales_admin')
+    foto = models.CharField(max_length=100, null=True)
     
     def __str__(self):
         return self.nombre
     
     class Meta :
         db_table = 'Sucursales'
-        verbose_name = 'Sucursale'
+        verbose_name = 'Sucursal'
         verbose_name_plural = 'Sucursales'
