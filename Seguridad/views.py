@@ -79,7 +79,8 @@ class Clase_Seguridad_Registro_Cadete(APIView):
                 status=HTTPStatus.FORBIDDEN,
             )
 
-        serializer = RegistroCadeteSerializer(data=request.data)
+        serializer = RegistroCadeteSerializer(data=request.data, context={"request": request})
+       
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(

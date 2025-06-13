@@ -15,7 +15,7 @@ class Usuario(AbstractUser):
     zona = models.ForeignKey("Zonas.Zona", on_delete=models.SET_NULL, null=True, blank=True)
     sucursal = models.ForeignKey("Sucursales.Sucursal", on_delete=models.SET_NULL, null=True, blank=True)
     tenantId = models.ForeignKey("Usuarios.Usuario", on_delete=models.SET_NULL, null=True, blank=True)
-
+    email = models.EmailField(unique=True, null=False, blank=False, max_length=254)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["first_name", "last_name"]

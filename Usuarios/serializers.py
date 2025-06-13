@@ -29,7 +29,6 @@ class RegistroTenantSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "email",
-            "username",  # Aseguramos que esté en fields
             "password",
             "password2",
             "role",
@@ -76,7 +75,6 @@ class RegistroAdminSucursalSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "email",
-            "username",  # Aseguramos que esté en fields
             "password",
             "password2",
             "role",
@@ -124,7 +122,6 @@ class RegistroCadeteSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "email",
-            "username",
             "password",
             "password2",
             "role",
