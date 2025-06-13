@@ -1,11 +1,24 @@
 from rest_framework import serializers
-from .models import *
+from .models import Pedido
 
-class RecetaSerializer (serializers.ModelSerializer) :
-    
-    cadete = serializers.ReadOnlyField(source='cadeteId.first_name')
-    zona = serializers.ReadOnlyField(source='zona.nombre')
-    
-    class Meta :
+
+class PedidoSerializer(serializers.ModelSerializer):
+
+    cadete = serializers.ReadOnlyField(source="cadeteId.first_name")
+    zona = serializers.ReadOnlyField(source="zonaId.nombre")
+
+    class Meta:
         model = Pedido
-        fields = ('id', 'direccion', 'emailCliente', 'telefonoCliente', 'cedulaCliente', 'fechaDeAsignacion', 'estado', 'trackingNumber', 'empresaOrigen', 'cadete', 'zona')
+        fields = (
+            "id",
+            "direccion",
+            "emailCliente",
+            "telefonoCliente",
+            "cedulaCliente",
+            "fechaDeAsignacion",
+            "estado",
+            "trackingNumber",
+            "empresaOrigen",
+            "cadete",  # solo lectura
+            "zona",  # solo lectura
+        )

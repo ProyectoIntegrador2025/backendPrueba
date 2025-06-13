@@ -1,10 +1,13 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
+from rest_framework import viewsets
+from .models import Entrega
+from .serializers import EntregaSerializer
+from django_filters.rest_framework import DjangoFilterBackend, OrderingFilter
 
-# Create your views here.
 
-
-class Clase_Entrega (APIView) :
-    
-    def get (self, request) :
-        pass
+class EntregaViewSet(viewsets.ModelViewSet):
+    queryset = Entrega.objects.all()
+    serializer_class = EntregaSerializer
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ["fechaDeEntrega"]
+    ordering_fields = ["fechaDeEntrega", "latitud", "longitud"]
+    ordering = ["fechaDeEntrega"]
