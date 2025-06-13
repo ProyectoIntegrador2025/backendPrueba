@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import *
+from .models import Recibo
 
-class RecetaSerializer (serializers.ModelSerializer) :
-    
-    tenant = serializers.ReadOnlyField(source='tenantId.first_name')
-    
-    class Meta :
+
+class ReciboSerializer(serializers.ModelSerializer):
+    tenant = serializers.ReadOnlyField(source="tenantId.first_name")  # solo lectura
+
+    class Meta:
         model = Recibo
-        fields = ('id', 'tenant', 'monto', 'fecha', 'estaPago')
+        fields = ("id", "tenantId", "tenant", "monto", "fecha", "estaPago")

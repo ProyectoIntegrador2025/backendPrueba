@@ -1,10 +1,10 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
+from rest_framework import viewsets
+from .models import Recibo
+from .serializers import ReciboSerializer
+from django_filters.rest_framework import DjangoFilterBackend, OrderingFilter
 
-# Create your views here.
-
-
-class Clase_Recibo (APIView) :
-    
-    def get (self, request) :
-        pass
+class ReciboViewSet(viewsets.ModelViewSet):
+    queryset = Recibo.objects.all()
+    serializer_class = ReciboSerializer
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ['fecha', 'estaPago', 'tenantId']

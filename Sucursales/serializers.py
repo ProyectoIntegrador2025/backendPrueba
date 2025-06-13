@@ -1,11 +1,12 @@
 from rest_framework import serializers
 from .models import *
+import os
 
 
 class SucursalSerializer(serializers.ModelSerializer):
     admin = serializers.ReadOnlyField(source="adminId.first_name")
     tenant = serializers.ReadOnlyField(source="tenantId.first_name")
-    foto = serializers.SerializerMethodField()
+    foto = serializers.ImageField(use_url=True, required=False, allow_null=True)
 
     class Meta:
         model = Sucursal
@@ -41,5 +42,6 @@ class SucursalSerializer(serializers.ModelSerializer):
 
         return data
 
-    def get_foto(self, obj):  # en el obj tenes disponibles todos los campos del modelo
-        return f"http://127.0.0.1:8000/uploads/sucursales/{obj.foto}"  # HAY QUE CAMBIAR LA URL BASE
+    def get_foto(self, obj):
+        base_url = os.getenv("BASE_URL")
+        return f"{base_url}uploads/sucursales/{obj.foto}"

@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 ROLE_CHOICES = (
-    ("supeadmin", "Super_Administrador"),
+    ("superadmin", "Super_Administrador"),
     ("adminSucursal", "Administrador_De_Sucursal"),
     ("cadete", "Cadete"),
     ("tenant", "Tenant"),
@@ -11,6 +11,14 @@ ROLE_CHOICES = (
 class Usuario(AbstractUser):
     role = models.CharField(max_length=50, choices=ROLE_CHOICES)
     foto = models.CharField(max_length=100, null=True, blank=True)
+    
+    zona = models.ForeignKey("Zonas.Zona", on_delete=models.SET_NULL, null=True, blank=True)
+    sucursal = models.ForeignKey("Sucursales.Sucursal", on_delete=models.SET_NULL, null=True, blank=True)
+    tenantId = models.ForeignKey("Usuarios.Usuario", on_delete=models.SET_NULL, null=True, blank=True)
+
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ["first_name", "last_name"]
     
     def __str__(self):
         return self.first_name

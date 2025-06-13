@@ -1,6 +1,11 @@
-from django.urls import path
-from .views import *
+# en recibos/urls.py
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ReciboViewSet
+
+router = DefaultRouter()
+router.register(r'recibos', ReciboViewSet, basename='recibo')
 
 urlpatterns = [
-    path('Recibo', Clase_Recibo.as_view())
+    path('', include(router.urls)),
 ]
