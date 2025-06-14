@@ -36,7 +36,7 @@ urlpatterns = [
     
     path('API/Recibos/', include('Recibos.urls')),
     
-    path('API/Seguridad', include('Seguridad.urls')),
+    path('API/Seguridad/', include('Seguridad.urls')),
     
     #SWAGGER
     path('Documentacion<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),

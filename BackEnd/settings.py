@@ -156,9 +156,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/assets/"
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "assets"),
-)  # ACA SE ALMACENAN LOS ARCHIVOS STATICOS QUE VAS A USAR EN LA API
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "assets"),
+# )  # ACA SE ALMACENAN LOS ARCHIVOS STATICOS QUE VAS A USAR EN LA API
 MEDIA_URL = "/Uploads/"
 MEDIA_ROOT = os.path.join(
     BASE_DIR, "Uploads"

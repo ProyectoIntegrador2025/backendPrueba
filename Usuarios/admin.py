@@ -9,6 +9,7 @@ from Usuarios.models import Usuario
 class UserAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'username',
         'email',
+        'password',
+        'role',
     )

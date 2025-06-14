@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from .managers import UsuarioManager
 
 ROLE_CHOICES = (
     ("superadmin", "Super_Administrador"),
@@ -9,6 +10,7 @@ ROLE_CHOICES = (
 )
 
 class Usuario(AbstractUser):
+    username = None  
     role = models.CharField(max_length=50, choices=ROLE_CHOICES)
     foto = models.CharField(max_length=100, null=True, blank=True)
     
@@ -19,6 +21,8 @@ class Usuario(AbstractUser):
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["first_name", "last_name"]
+
+    objects = UsuarioManager()
     
     def __str__(self):
         return self.first_name
