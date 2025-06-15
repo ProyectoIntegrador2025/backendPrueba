@@ -9,7 +9,7 @@ class ZonaViewSet(viewsets.ModelViewSet):
     queryset = Zona.objects.all()
     serializer_class = ZonaSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter, SearchFilter]
-    filterset_fields = ["nombre", "sucursalId"]
-    ordering_fields = ['nombre', 'sucursalId']
+    filterset_fields = ['nombre', 'sucursalId_nombre']
+    ordering_fields = ['nombre', 'sucursalId_nombre']
     ordering = ['nombre']
-    search_fields = ["nombre", "direccion", "adminId", "tenantId"]
+    search_fields = ['nombre, sucursalId__nombre']
